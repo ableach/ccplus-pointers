@@ -8,13 +8,14 @@ Date: 09/01/2021
 
 void showPointerInfo(void);
 int stringLength(const char* pstring);
+int stringLength2(const char* pstring);
 
 int main() {
 
     char testString[100];
     printf("Please enter a string:\n");
     scanf("%s",testString);
-    printf("length of string %s is %d:\n",testString,stringLength(testString));
+    printf("length of string %s is %d:\n",testString,stringLength2(testString));
     printf("\n-----------\n");
     showPointerInfo();
 }
@@ -25,6 +26,16 @@ int stringLength(const char* pstring) {
 
     return pstring - pstring_start - 1;
 }
+
+/* suggested answer */
+int stringLength2(const char* pstring) {
+    const char* pstring_end = pstring;
+    while ( *pstring_end )
+        pstring_end++;
+
+    return pstring_end - pstring;
+}
+
 
 void showPointerInfo() {
     int size = 10;
