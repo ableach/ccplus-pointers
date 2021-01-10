@@ -7,10 +7,23 @@ Date: 09/01/2021
 #include <stddef.h>
 
 void showPointerInfo(void);
+int stringLength(const char* pstring);
 
 int main() {
 
+    char testString[100];
+    printf("Please enter a string:\n");
+    scanf("%s",testString);
+    printf("length of string %s is %d:\n",testString,stringLength(testString));
+    printf("\n-----------\n");
     showPointerInfo();
+}
+
+int stringLength(const char* pstring) {
+    const char* pstring_start = pstring;
+    while ( *pstring++ );
+
+    return pstring - pstring_start - 1;
 }
 
 void showPointerInfo() {
