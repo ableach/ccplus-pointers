@@ -6,7 +6,14 @@ Date: 09/01/2021
 #include <stdio.h>
 #include <stddef.h>
 
+void showPointerInfo(void);
+
 int main() {
+
+    showPointerInfo();
+}
+
+void showPointerInfo() {
     int size = 10;
     int * psize = NULL;
 
@@ -20,7 +27,5 @@ int main() {
     printf("sizeof pointer variable = %lu\n", sizeof(psize));
     printf("dereference/indirection operator *: value pointed to by pointer variable = %d\n", *psize);
     printf("address of pointer variable = %p\n", &psize);
-
-    return 0;
 
 }
