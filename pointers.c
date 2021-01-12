@@ -9,8 +9,13 @@ Date: 09/01/2021
 void showPointerInfo(void);
 int stringLength(const char* pstring);
 int stringLength2(const char* pstring);
+void squareByReference(int * numberToSquare);
 
 int main() {
+    
+    int numberToSquare = 7;
+    squareByReference(&numberToSquare);
+    printf("6 squared = %d\n",numberToSquare);
 
     char testString[100];
     printf("Please enter a string:\n");
@@ -18,6 +23,10 @@ int main() {
     printf("length of string %s is %d:\n",testString,stringLength2(testString));
     printf("\n-----------\n");
     showPointerInfo();
+}
+
+void squareByReference(int * numberToSquare) {
+    *numberToSquare *= *numberToSquare;
 }
 
 int stringLength(const char* pstring) {
