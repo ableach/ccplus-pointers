@@ -5,14 +5,18 @@ Date: 09/01/2021
 
 #include <stdio.h>
 #include <stddef.h>
+#include <stdlib.h>
 
 void showPointerInfo(void);
 int stringLength(const char* pstring);
 int stringLength2(const char* pstring);
 void squareByReference(int * numberToSquare);
+void printStringUsingMaloc();
 
 int main() {
-    
+    printStringUsingMaloc();
+    printf("\n-----------\n");
+
     int numberToSquare = 7;
     squareByReference(&numberToSquare);
     printf("6 squared = %d\n",numberToSquare);
@@ -23,6 +27,23 @@ int main() {
     printf("length of string %s is %d:\n",testString,stringLength2(testString));
     printf("\n-----------\n");
     showPointerInfo();
+}
+
+void printStringUsingMaloc() {
+    char *myString = NULL;
+    int stringLength = 0;
+
+    printf("How long is the string?\n");
+    scanf("%d",&stringLength);
+
+    myString = (char *) malloc(stringLength * sizeof(char));
+    if ( myString != NULL) {
+        printf("Please enter the string:\n");
+        scanf("%s",myString);
+        printf("string = %s\n", myString);
+    }
+
+    free(myString);
 }
 
 void squareByReference(int * numberToSquare) {
