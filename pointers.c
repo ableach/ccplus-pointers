@@ -6,6 +6,7 @@ Date: 09/01/2021
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 
 void showPointerInfo(void);
 int stringLength(const char* pstring);
@@ -13,7 +14,21 @@ int stringLength2(const char* pstring);
 void squareByReference(int * numberToSquare);
 void printStringUsingMaloc();
 
+struct employeeType {
+    char name[20];
+    int hireDate;
+    float salary;
+};
+
 int main() {
+
+    struct employeeType employee;
+    strcpy(employee.name, "Fred");
+    employee.hireDate = 20;
+    employee.salary = 2500;
+
+    printf("Employee name = %s, salary = %.2f, hire = %i\n", employee.name, employee.salary,employee.hireDate);
+
     printStringUsingMaloc();
     printf("\n-----------\n");
 
