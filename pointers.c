@@ -71,6 +71,10 @@ void placeOrder() {
 void readItem(struct itemType *item) {
     
     item->p_itemName = (char *) malloc(30 * sizeof(char));
+
+    if (!item) 
+        exit(-1);
+
     printf("Please enter item name:\n");
     scanf("%s",item->p_itemName);   
 
