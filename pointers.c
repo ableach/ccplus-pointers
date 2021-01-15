@@ -64,6 +64,8 @@ void placeOrder() {
 
     readItem(&item);
     printItem(&item);
+
+    free(item.p_itemName);
 }
 
 void readItem(struct itemType *item) {
