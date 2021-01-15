@@ -15,6 +15,18 @@ void squareByReference(int * numberToSquare);
 void printStringUsingMaloc();
 void practiceStruct();
 
+struct itemType {
+    char itemName[50];
+    int quantity;
+    float price;
+    float amount;
+};
+
+
+void placeOrder();
+void readItem(struct itemType *item);
+void printItem(struct itemType *item);
+
 struct dateType {
     int day;
     int month;
@@ -29,6 +41,10 @@ struct employeeType {
 
 int main() {
 
+    placeOrder();
+
+    printf("\n\n");
+
     practiceStruct();
 
     int numberToSquare = 7;
@@ -41,6 +57,29 @@ int main() {
     printf("length of string %s is %d:\n",testString,stringLength2(testString));
     printf("\n-----------\n");
     showPointerInfo();
+}
+
+void placeOrder() {
+    struct itemType item;
+
+    readItem(&item);
+    printItem(&item);
+}
+void readItem(struct itemType *item) {
+    printf("Please enter item name:\n");
+    scanf("%s",item->itemName);
+    printf("Please enter quantity:\n");
+    scanf("%i",&item->quantity);
+    printf("Please enter price:\n");
+    scanf("%f",&item->price);
+
+    item->amount = item->quantity * item->price;
+}
+void printItem(struct itemType *item) {
+    printf("Item = %s\n",item->itemName);
+    printf("Quantity = %i\n",item->quantity);
+    printf("Item price = %.2f\n",item->price);
+    printf("Total = %.2f\n",item->amount);
 }
 
 void practiceStruct() {
