@@ -16,7 +16,7 @@ void printStringUsingMaloc();
 void practiceStruct();
 
 struct itemType {
-    char itemName[50];
+    char *p_itemName;
     int quantity;
     float price;
     float amount;
@@ -65,9 +65,13 @@ void placeOrder() {
     readItem(&item);
     printItem(&item);
 }
+
 void readItem(struct itemType *item) {
+    
+    item->p_itemName = (char *) malloc(30 * sizeof(char));
     printf("Please enter item name:\n");
-    scanf("%s",item->itemName);
+    scanf("%s",item->p_itemName);   
+
     printf("Please enter quantity:\n");
     scanf("%i",&item->quantity);
     printf("Please enter price:\n");
@@ -75,8 +79,9 @@ void readItem(struct itemType *item) {
 
     item->amount = item->quantity * item->price;
 }
+
 void printItem(struct itemType *item) {
-    printf("Item = %s\n",item->itemName);
+    printf("Item = %s\n",item->p_itemName);
     printf("Quantity = %i\n",item->quantity);
     printf("Item price = %.2f\n",item->price);
     printf("Total = %.2f\n",item->amount);
