@@ -13,24 +13,23 @@ int stringLength(const char* pstring);
 int stringLength2(const char* pstring);
 void squareByReference(int * numberToSquare);
 void printStringUsingMaloc();
+void practiceStruct();
+
+struct dateType {
+    int day;
+    int month;
+    int year;
+};
 
 struct employeeType {
     char name[20];
-    int hireDate;
+    struct dateType hireDate;
     float salary;
 };
 
 int main() {
 
-    struct employeeType employee;
-    strcpy(employee.name, "Fred");
-    employee.hireDate = 20;
-    employee.salary = 2500;
-
-    printf("Employee name = %s, salary = %.2f, hire = %i\n", employee.name, employee.salary,employee.hireDate);
-
-    printStringUsingMaloc();
-    printf("\n-----------\n");
+    practiceStruct();
 
     int numberToSquare = 7;
     squareByReference(&numberToSquare);
@@ -42,6 +41,19 @@ int main() {
     printf("length of string %s is %d:\n",testString,stringLength2(testString));
     printf("\n-----------\n");
     showPointerInfo();
+}
+
+void practiceStruct() {
+    struct employeeType employee = {"Fred",{1,12,2020},2500.50f};
+
+    printf("Employee name = %s, salary = %.2f, hire = %02i-%02i-%i\n", employee.name, employee.salary,employee.hireDate.day,employee.hireDate.month,employee.hireDate.year);
+
+    printf("Please enter new employee: \n");
+    scanf("%s",employee.name);
+    printf("Please enter new employee salary: \n");
+    scanf("%f",&employee.salary);
+
+    printf("Employee name = %s, salary = %.2f\n", employee.name, employee.salary);
 }
 
 void printStringUsingMaloc() {
